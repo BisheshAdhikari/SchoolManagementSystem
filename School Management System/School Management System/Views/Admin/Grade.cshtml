@@ -1,0 +1,56 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@model School_Management_System.Models.Grade;
+
+@{
+    var successMessage = TempData["SuccessMessage"] as string;
+}
+
+@if (!string.IsNullOrEmpty(successMessage))
+{
+    <div class="alert alert-success">
+        @successMessage
+    </div>
+}
+
+@using (Html.BeginForm("CreateStudent", "Admin", FormMethod.Post))
+{
+    @* <div class="form-group">
+        @Html.LabelFor(model => model.GradeName)
+        @Html.TextBoxFor(model => model.GradeName, new { @class = "form-control" })
+    </div> *@
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.GradeName)
+        @Html.DropDownListFor(model => model.GradeName, new SelectList(new[]
+                {
+    new SelectListItem { Text = "Grade 1", Value = "Grade 1" },
+    new SelectListItem { Text = "Grade 2", Value = "Grade 2" },
+    new SelectListItem { Text = "Grade 3", Value = "Grade 3" },
+    new SelectListItem { Text = "Grade 4", Value = "Grade 4" },
+    new SelectListItem { Text = "Grade 5", Value = "Grade 5" }
+    }, "Value", "Text"), "Select Grade", new { @class = "form-control" })
+    </div>
+
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
